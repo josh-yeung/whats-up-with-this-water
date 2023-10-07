@@ -7,7 +7,7 @@ def main():
 
     # Loading Screen
     loading = [[sg.Text('Fun Fact')], [sg.Button('Start')]]
-    loadingWindow = sg.Window('Loading', loading)
+    loadingWindow = sg.Window('Loading', loading, size=(500,500), element_justification='c')
             
     #Loading Screen
     loadingEvent, loadingValues = loadingWindow.read()
@@ -30,7 +30,7 @@ def main_menu():
                 [sg.Text(f'Location: {back.return_longlat()}')],
                 [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] ]
 
-    window = sg.Window('Prokaryote', layout)
+    window = sg.Window('Prokaryote', layout, size=(500,500), element_justification='c')
 
     #Water Safety
     water = [[sg.Text('Water Safety')], [sg.Text("-Water Status")]]
@@ -46,11 +46,11 @@ def main_menu():
             break
         if event == 'Water Safety Level':
             window.close()
-            waterWindow = sg.Window('Water Health', water)
+            waterWindow = sg.Window('Water Health', water, size=(500,500), element_justification='c')
             subwindow_handler(waterWindow)
         if event == 'Species Nearby':
             window.close()
-            animalWindow = sg.Window('Endangered Species Nearby', animal)
+            animalWindow = sg.Window('Endangered Species Nearby', animal, size=(500,500), element_justification='c')
             subwindow_handler(animalWindow)
         if event == "Refresh":
             window.close()
