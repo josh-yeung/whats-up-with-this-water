@@ -56,7 +56,8 @@ def find_nearest_location(reference_point, locations):
     nearest_location = None
     
     for location in locations:
-        distance = haversine_distance(reference_point['latitude'], reference_point['longitude'], location['latitude'], location['longitude'])
+        if (location['latitude'] != None and location['longitude'] != None):
+            distance = haversine_distance(reference_point['latitude'], reference_point['longitude'], location['latitude'], location['longitude'])
         
         if distance < min_distance:
             min_distance = distance
@@ -84,11 +85,14 @@ def return_longlat():
 
 
 def findClosestLake(): 
-    latitude, longitude = return_longlat()
+    #latitude, longitude = return_longlat()
+    latitude = 44.2963
+    longitude = -79.4362
     # print("latitude: ", latitude)
     # print("longitude: ", longitude)
     referencePoint = {'latitude': latitude, 'longitude': longitude}
     locations = []
+    lakeCoords = []
     wb = openpyxl.load_workbook('magnetic-reconnection\station.xlsx')
     ws = wb.active
     lofname = []
@@ -108,9 +112,28 @@ def findClosestLake():
         data = ws.cell(i,column=12).value
         loflatitude.append(data)
     
+    for i in range(0, len(loflongitude)):
+        x = {'latitude': loflatitude[i], 'longitude': loflongitude[i]}
+        locations.append(x)
     
-
-
+    for i in range(0, len(lofname)):
+        key = str(loflatitude[i]) + ',' + str(loflongitude[i])
+        x = {key: lofname[i]}
+        lakeCoords.append(x)
+        
+    nearest_location = find_nearest_location(referencePoint, locations)
+    # print(nearest_location)
+    x = nearest_location['latitude']
+    y = nearest_location['longitude']
+    key = str(x) + ',' + str(y)
+    for i in range(0, len(lakeCoords)):
+        if key in lakeCoords[i]:
+            name = (lakeCoords[i])[key]
+            break
+    print(name)
+    return name
+    
+        
 findClosestLake()
 
 
