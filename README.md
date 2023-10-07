@@ -1,4 +1,4 @@
 # magnetic-reconnection
 NASA Space Apps Hackathon Submission
 Team Prokaryote: Alexander Diab-Liu, Joshua Yeung, Daniel Ramirez-Gaston
-October 2023
+October 07, 2023
