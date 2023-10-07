@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 import time
+import backend as back
 
 def main():
     sg.theme('LightBlue7')
@@ -26,7 +27,7 @@ def main_menu():
     #Home
     layout = [  [sg.Button('Refresh')],
                 [sg.Text('Weather:')],
-                [sg.Text('Location:')],
+                [sg.Text(f'Location: {back.return_longlat()}')],
                 [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] ]
 
     window = sg.Window('Prokaryote', layout)
@@ -42,6 +43,7 @@ def main_menu():
         event, values = window.read()
         if event == sg.WIN_CLOSED:
             window.close()
+            break
         if event == 'Water Safety Level':
             window.close()
             waterWindow = sg.Window('Water Health', water)
