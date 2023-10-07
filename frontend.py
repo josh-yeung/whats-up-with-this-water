@@ -1,39 +1,59 @@
 import PySimpleGUI as sg
+import time
 
-sg.theme('LightBlue7')
+def main():
+    sg.theme('LightBlue7')
 
-# Loading Screen
-
-loading = [[sg.Text('Fun Fact')], [sg.Button('Start')]]
-loadingWindow = sg.Window('Loading', loading)
-        
-
-# Home Screen
-
-layout = [  [sg.Button('Refresh')],
-            [sg.Text('Weather:')],
-            [sg.Text('Location:')],
-            [sg.Button('Water Saftey Level'), sg.Button('Species Nearby')] ]
-
-
-window = sg.Window('Prokaryote', layout)
-
-
-while True:
+    # Loading Screen
+    loading = [[sg.Text('Fun Fact')], [sg.Button('Start')]]
+    loadingWindow = sg.Window('Loading', loading)
+            
+    #Loading Screen
     loadingEvent, loadingValues = loadingWindow.read()
-    event, values = window.read()
-    if loadingEvent == sg.WIN_CLOSED:
+    if (loadingEvent==sg.WIN_CLOSED or loadingEvent=="Start"):
         loadingWindow.close()
-        break
-    if loadingEvent == 'Start':
-        loadingWindow.close()
+        main_menu()
+
+def subwindow_handler(subwindow):
+    subevent, subvalues = subwindow.read()
+    if(subevent==sg.WIN_CLOSED):
+        subwindow.close()
+        main_menu()
+
+
+
+def main_menu():
+    #Home
+    layout = [  [sg.Button('Refresh')],
+                [sg.Text('Weather:')],
+                [sg.Text('Location:')],
+                [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] ]
+
+    window = sg.Window('Prokaryote', layout)
+
+    #Water Safety
+    water = [[sg.Text('Water Safety')], [sg.Text("-Water Status")]]
+
+    #Animal Species
+    animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")]]
+
+
+    while True:
         event, values = window.read()
         if event == sg.WIN_CLOSED:
             window.close()
-        if event == 'Water Saftey Level':
-            print('hi')
+        if event == 'Water Safety Level':
+            window.close()
+            waterWindow = sg.Window('Water Health', water)
+            subwindow_handler(waterWindow)
         if event == 'Species Nearby':
-            print('hello')
+            window.close()
+            animalWindow = sg.Window('Endangered Species Nearby', animal)
+            subwindow_handler(animalWindow)
+        if event == "Refresh":
+            window.close()
+            main_menu()
+            break
 
 
-    
+main()
