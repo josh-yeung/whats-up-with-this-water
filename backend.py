@@ -322,5 +322,5 @@ def return_animal_facts(name):
     if(name == "Nooksack Dace"):
         x = ("Location: Nooksack dace inhabit streams and rivers in British Columbia \nand some parts of the western United States.")
         x += ("\n\nDiet: They primarily feed on aquatic invertebrates.")
-        x += ("\n\nWhy They're Endangered: Habitat loss and degradation caused by urban \ndevelopment, agriculture, and water diversion have led to the decline of Nooksack dace populations. These factors have limited their suitable habitat.\n\n\n")
+        x += ("\n\nWhy They're Endangered: Habitat loss and degradation caused by urban \ndevelopment, agriculture, and water diversion have led to the decline of Nooksack\n dace populations. These factors have limited their suitable habitat.\n\n\n")
         return x
