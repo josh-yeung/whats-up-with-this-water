@@ -34,7 +34,7 @@ def subwindow_handler(subwindow, window):
                     'and changes in water quality, which can be detrimental to the ecosystem.')],
             [sg.Text('\n')], [sg.Image('waterquality.png')], [sg.Button("Back")]]
 
-    animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")], [sg.Button("Ocean Wordle!")], [sg.Button("Back")]]
+    animal = [[sg.Text(f'Animal Species: {back.find_closest_animals(long,lat)}')], [sg.Text("-Animal Fact")], [sg.Button("Ocean Wordle!")], [sg.Button("Back")]]
     if(subwindow=="water"):
         SecondWindow = sg.Window('Water Health', water, size=(500,500), element_justification='c')
     else:

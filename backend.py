@@ -11,6 +11,7 @@ import math
 import openpyxl
 from pyexcel.cookbook import merge_all_to_a_book
 import glob
+import pandas as pd
 
 def return_longlat():
     g = geocoder.ip('me')
@@ -254,3 +255,44 @@ def return_ecosystem(return_longlat):
         eco_system = "Built-in"
     print(eco_system)
     return eco_system
+
+
+def find_closest_animals(latitude, longitude):
+    referencePoint = {'latitude': latitude, 'longitude': longitude}
+    locations = []
+    cityCoords = []
+
+    wb = openpyxl.load_workbook('animals.xlsx')
+    ws = wb.active
+    lofname = []
+    loflongitude = []
+    loflatitude = []
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=1).value
+        lofname.append(data)
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=2).value
+        loflongitude.append(data)
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=3).value
+        loflatitude.append(data)
+    
+    for i in range(0, len(loflongitude)):
+        x = {'latitude': loflatitude[i], 'longitude': loflongitude[i]}
+        locations.append(x)
+    
+    for i in range(0, len(lofname)):
+        key = str(loflatitude[i]) + ',' + str(loflongitude[i])
+        x = {key: lofname[i]}
+        cityCoords.append(x)
+        
+    nearest_location = find_nearest_location(referencePoint, locations)
+    # print(nearest_location)
+    x = nearest_location['latitude']
+    y = nearest_location['longitude']
+    key = str(x) + ',' + str(y)
+    for i in range(0, len(cityCoords)):
+        if key in cityCoords[i]:
+            name = (cityCoords[i])[key]
+            break
+    return name
