@@ -1,7 +1,8 @@
 import PySimpleGUI as sg
 import time
 import backend as back
-        
+import word as word
+
 def main():
     sg.theme('Dark Amber')
 
@@ -26,7 +27,7 @@ def subwindow_handler(subwindow, window):
                     'and changes in water quality, which can be detrimental to the ecosystem.')],
             [sg.Text('\n')], [sg.Image('waterquality.png')], [sg.Button("Back")]]
 
-    animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")], [sg.Button("Back")]]
+    animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")], [sg.Button("Ocean Wordle!")], [sg.Button("Back")]]
     if(subwindow=="water"):
         SecondWindow = sg.Window('Water Health', water, size=(500,500), element_justification='c')
     else:
@@ -35,6 +36,9 @@ def subwindow_handler(subwindow, window):
     if(subevent==sg.WIN_CLOSED):
         SecondWindow.close()
         window.close()
+    if(subevent=="Ocean Wordle!"):
+        word.main()
+        SecondWindow.close()
     if(subevent=="Back"):
         SecondWindow.close()
 
