@@ -26,7 +26,9 @@ def main_menu():
     #Home
     long, lat = back.return_longlat()
     city, province = back.findClosestCity(long, lat)
-    layout = [  [sg.Image('canadamap.png'),],
+    
+    back.redownload_lakes_excel()
+    layout = [  [sg.Image('canadamap.png'),]
                 [sg.Button('Refresh')],
                 [sg.Text(f'Weather: {back.weather(city, province)}')],
                 [sg.Text(f'Location: {back.findClosestCity(long, lat)}')],

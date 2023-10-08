@@ -2,8 +2,15 @@ import geocoder
 import requests
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
+from PIL import Image
+import wget
+import zipfile
+import os
+im = Image.open("map2.png").convert('RGB')
 import math
-import openpyxl 
+import openpyxl
+from pyexcel.cookbook import merge_all_to_a_book
+import glob
 
 def return_longlat():
     g = geocoder.ip('me')
@@ -222,10 +229,28 @@ def typeOfWater(latitude, longitude):
                 type = "Unknown Water Source"
     return type
 
-    
-    
+def redownload_lakes_excel():
+    wget.download("https://www.waterqualitydata.us/data/Station/search?countrycode=CA&mimeType=csv&zip=yes&providers=NWIS&providers=STEWARDS&providers=STORET")
+    with zipfile.ZipFile("station.zip", "r") as zip_ref:
+        zip_ref.extractall()
+    os.remove("station.zip")
+    merge_all_to_a_book(glob.glob("station.csv"), "station.xlsx")
+    os.remove("station.csv")
 
-
-
-
-
+def return_ecosystem(return_longlat):
+    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (74, 161, 112):
+        eco_system = "Evergreen ecosystem"
+    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (240, 225, 117):
+        eco_system = "Deciduous ecosystem"
+    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (228, 237, 251):
+        eco_system = "Shrubland"
+    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (192, 203, 149):
+        eco_system = "grassland"
+    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (205, 213, 230):
+        eco_system = "Cropland"
+    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (252, 252, 252):
+        eco_system = "Cropland"
+    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (74, 161, 112):
+        eco_system = "Built-in"
+    print(eco_system)
+    return eco_system
