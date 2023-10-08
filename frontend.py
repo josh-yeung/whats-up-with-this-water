@@ -18,7 +18,14 @@ def main():
 
 def subwindow_handler(subwindow, window):
     long, lat = back.return_longlat()
-    water = [[sg.Text('Water Safety', font=("Helvetica", 11, "bold"))], [sg.Text(f'Drainage: {back.drainageToLake(long, lat)}')],
+    drainage, name = back.drainageToLake(long, lat)
+    if(drainage=="Unknown Amount"):
+        safety_message = f"Safety Levels are Unknown. Proceed at own risk."
+    elif(float(drainage)<=7366.0):
+        safety_message = f"Safety Levels lower than average. Relatively Safe."
+    else:
+        safety_message = f"Safety Levels higher than average. Do not Swim"
+    water = [[sg.Text('Water Safety', font=("Helvetica", 11, "bold"))], [sg.Text(f'Drainage in {name}: {drainage}')], [sg.Text(f'{safety_message}\n')],
             [sg.Text('Natural Hydrology', font=("Helvetica", 11, "bold"))], 
             [sg.Text('In natural ecosystems, bodies of water often have natural drainage patterns, \n' 
                     'and these patterns play a crucial role in maintaining the health of \n'

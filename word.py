@@ -10,7 +10,7 @@ def TextChar(value, key):
     return sg.Input(value, key=key, font='Courier 22', size=(1,1),  disabled_readonly_background_color='gray', border_width=1,  p=1, enable_events=True, disabled=True)
 
 def main():
-    words = ['OTTER', 'WHALE', 'SHARK', 'SQUID']
+    words = ['OTTER', 'WHALE', 'SHARK', 'SQUID', 'PRAWN', 'SEALS', 'CORAL', 'ORCAS', 'CONCH', 'CLAMS']
 
     num = random.randint(0,len(words))
     answer = words[num]

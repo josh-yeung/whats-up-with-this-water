@@ -201,7 +201,7 @@ def drainageToLake(latitude, longitude):
                 break
             else:
                 drainage = "Unknown Amount"
-    return drainage
+    return drainage, name
 
 
 def typeOfWater(latitude, longitude): 
@@ -254,6 +254,3 @@ def return_ecosystem(return_longlat):
         eco_system = "Built-in"
     print(eco_system)
     return eco_system
-
-import PySimpleGUI as sg
-from random import randint
