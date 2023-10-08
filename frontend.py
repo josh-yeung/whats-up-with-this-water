@@ -27,6 +27,7 @@ def main_menu():
     #Home
     long, lat = back.return_longlat()
     city, province = back.findClosestCity(long, lat)
+    back.redownload_lakes_excel()
     layout = [  [sg.Button('Refresh')],
                 [sg.Text(f'Weather: {back.weather(city, province)}')],
                 [sg.Text(f'Location: {back.findClosestCity(long, lat)}')],

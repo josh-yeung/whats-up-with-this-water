@@ -3,7 +3,9 @@ import requests
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 from PIL import Image
-
+import wget
+import zipfile
+import os
 im = Image.open("map2.png").convert('RGB')
 import math
 import openpyxl 
@@ -88,7 +90,7 @@ def findClosestLake(latitude, longitude):
     referencePoint = {'latitude': latitude, 'longitude': longitude}
     locations = []
     lakeCoords = []
-    wb = openpyxl.load_workbook('station.xlsx')
+    wb = openpyxl.load_workbook('station.csv')
     ws = wb.active
     lofname = []
     loflongitude = []
@@ -176,7 +178,7 @@ def findClosestCity(latitude, longitude):
 
 def drainageToLake(latitude, longitude): 
     name = findClosestLake(latitude, longitude)
-    wb = openpyxl.load_workbook('station.xlsx')
+    wb = openpyxl.load_workbook('station.csv')
     ws = wb.active
     lofname = []
     lofdrainage= []
@@ -202,7 +204,7 @@ def drainageToLake(latitude, longitude):
 
 def typeOfWater(latitude, longitude): 
     name = findClosestLake(latitude, longitude)
-    wb = openpyxl.load_workbook('station.xlsx')
+    wb = openpyxl.load_workbook('station.csv')
     ws = wb.active
     lofname = []
     loftype= []
@@ -225,10 +227,10 @@ def typeOfWater(latitude, longitude):
                 type = "Unknown Water Source"
     return type
 
-    
-    
-
-
-
+def redownload_lakes_excel():
+    wget.download("https://www.waterqualitydata.us/data/Station/search?countrycode=CA&mimeType=csv&zip=yes&providers=NWIS&providers=STEWARDS&providers=STORET")
+    with zipfile.ZipFile("station.zip", "r") as zip_ref:
+        zip_ref.extractall()
+    os.remove("station.zip")
 
 
