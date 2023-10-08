@@ -56,14 +56,8 @@ def main_menu():
     city, province = back.findClosestCity(long, lat)
 
     back.redownload_lakes_excel()
-    layout = [  [sg.Button('Refresh')],
-                [sg.Text(f'Weather: {back.weather(city, province)}')],
-                [sg.Text(f'Location: {back.findClosestCity(long, lat)}')],
-                [sg.Text(f'Closest Body of Water: {back.findClosestLake(long, lat)}')],
-                [sg.Text(f'Type of Water: {back.typeOfWater(long, lat)}')],
-                [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] 
-                                                                                ]
-    layout = [  [sg.Image('canadamap.png')],
+    layout = [  [sg.Text('Water You Up To?', font=("Helvetica", 20, "bold"))],
+                [sg.Image('canadamap.png')],
                 [sg.Button('Refresh'),],
                 [sg.Text(f'Weather: {back.weather(city, province)}', font=("Helvetica", 11))],
                 [sg.Text(f'Location: {back.findClosestCity(long, lat)}', font=("Helvetica", 11))],
