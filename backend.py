@@ -298,28 +298,29 @@ def find_closest_animals(latitude, longitude):
 
 def return_animal_facts(name):
     if(name == "Sea otters"):
-        print("")
+        return ("")
     if(name == "Blue whale"):
-        print("")
+        return ("")
     if(name == "Basking shark"):
-        print("")
+        return ("")
     if(name == "Humpback whale"):
-        print("")
+        return ("")
     if(name == "Leatherback turtle"):
-        print("")
+        return ("")
     if(name == "Shortnose sturgeon"):
-        print("")
+        return ("")
     if(name == "Atlantic salmon"):
-        print("")
+        return ("")
     if(name == "Lake sturgeon"):
-        print("")
+        return ("")
     if(name == "White sturgeon"):
-        print("")
+        return ("")
     if(name == "Eastern Sand darter"):
         print("")
     if(name == "Vancouver lamprey"):
-        print("")
+        return ("")
     if(name == "Nooksack Dace"):
-        print("Location: Nooksack dace inhabit streams and rivers in British Columbia and some parts of the western United States.")
-        print("Diet: They primarily feed on aquatic invertebrates.")
-        print("Why They're Endangered: Habitat loss and degradation caused by urban development, agriculture, and water diversion have led to the decline of Nooksack dace populations. These factors have limited their suitable habitat.")
+        x = ("Location: Nooksack dace inhabit streams and rivers in British Columbia \nand some parts of the western United States.")
+        x += ("\n\nDiet: They primarily feed on aquatic invertebrates.")
+        x += ("\n\nWhy They're Endangered: Habitat loss and degradation caused by urban \ndevelopment, agriculture, and water diversion have led to the decline of Nooksack dace populations. These factors have limited their suitable habitat.\n\n\n")
+        return x
