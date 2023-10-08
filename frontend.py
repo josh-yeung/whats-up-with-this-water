@@ -3,7 +3,7 @@ import time
 import backend as back
         
 def main():
-    # sg.theme('LightBlue7')
+    sg.theme('Dark Amber')
 
     # # Loading Screen
     # loading = [[sg.Text('Fun Fact')], [sg.Button('Start')]]
