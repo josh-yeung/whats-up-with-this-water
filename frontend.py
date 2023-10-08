@@ -33,7 +33,8 @@ def main_menu():
                 [sg.Text(f'Location: {back.findClosestCity(long, lat)}')],
                 [sg.Text(f'Closest Body of Water: {back.findClosestLake(long, lat)}')],
                 [sg.Text(f'Type of Water: {back.typeOfWater(long, lat)}')],
-                [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] ]
+                [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] 
+                                                                                ]
 
     window = sg.Window('Prokaryote', layout, size=(500,500), element_justification='c')
 
@@ -61,6 +62,4 @@ def main_menu():
             window.close()
             main_menu()
             break
-
-
 main()

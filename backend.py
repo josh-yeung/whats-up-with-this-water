@@ -236,21 +236,3 @@ def redownload_lakes_excel():
     os.remove("station.zip")
     merge_all_to_a_book(glob.glob("station.csv"), "station.xlsx")
     os.remove("station.csv")
-
-def return_ecosystem(return_longlat):
-    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (74, 161, 112):
-        eco_system = "Evergreen ecosystem"
-    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (240, 225, 117):
-        eco_system = "Deciduous ecosystem"
-    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (228, 237, 251):
-        eco_system = "Shrubland"
-    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (192, 203, 149):
-        eco_system = "grassland"
-    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (205, 213, 230):
-        eco_system = "Cropland"
-    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (252, 252, 252):
-        eco_system = "Cropland"
-    if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (74, 161, 112):
-        eco_system = "Built-in"
-    print(eco_system)
-    return eco_system
