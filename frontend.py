@@ -15,7 +15,7 @@ def main():
     #     loadingWindow.close()
     main_menu()
 
-def subwindow_handler(subwindow):
+def subwindow_handler(subwindow, window):
     long, lat = back.return_longlat()
     water = [[sg.Text('Water Safety', font=("Helvetica", 11, "bold"))], [sg.Text(f'Drainage: {back.drainageToLake(long, lat)}')],
             [sg.Text('Natural Hydrology', font=("Helvetica", 11, "bold"))], 
@@ -24,15 +24,18 @@ def subwindow_handler(subwindow):
                     'the ecosystem. High drainage can disrupt these natural patterns and \n' 
                     'may lead to negative consequences such as erosion, habitat loss, \n'
                     'and changes in water quality, which can be detrimental to the ecosystem.')],
-            [sg.Text('\n')], [sg.Image('waterquality.png')]]
+            [sg.Text('\n')], [sg.Image('waterquality.png')], [sg.Button("Back")]]
 
-    animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")]]
+    animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")], [sg.Button("Back")]]
     if(subwindow=="water"):
         SecondWindow = sg.Window('Water Health', water, size=(500,500), element_justification='c')
     else:
         SecondWindow = sg.Window('Endangered Species Nearby', animal, size=(500,500), element_justification='c')
     subevent, subvalues = SecondWindow.read()
     if(subevent==sg.WIN_CLOSED):
+        SecondWindow.close()
+        window.close()
+    if(subevent=="Back"):
         SecondWindow.close()
 
 
@@ -60,9 +63,9 @@ def main_menu():
             window.close()
             break
         if event == 'Water Safety Level':
-            subwindow_handler("water")
+            subwindow_handler("water", window)
         if event == 'Species Nearby':
-            subwindow_handler("animal")
+            subwindow_handler("animal", window)
         if event == "Refresh":
             window.close()
             main_menu()
