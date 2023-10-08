@@ -16,10 +16,16 @@ def main():
     main_menu()
 
 def subwindow_handler(subwindow):
-    subevent, subvalues = subwindow.read()
+    long, lat = back.return_longlat()
+    water = [[sg.Text('Water Safety')], [sg.Text(f'Drainage: {back.drainageToLake(long, lat)}')]]
+    animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")]]
+    if(subwindow=="water"):
+        SecondWindow = sg.Window('Water Health', water, size=(500,500), element_justification='c')
+    else:
+        SecondWindow = sg.Window('Endangered Species Nearby', animal, size=(500,500), element_justification='c')
+    subevent, subvalues = SecondWindow.read()
     if(subevent==sg.WIN_CLOSED):
-        subwindow.close()
-        main_menu()
+        SecondWindow.close()
 
 
 def main_menu():
@@ -28,7 +34,7 @@ def main_menu():
     city, province = back.findClosestCity(long, lat)
     
     back.redownload_lakes_excel()
-    layout = [  [sg.Image('canadamap.png'),]
+    layout = [  [sg.Image('canadamap.png')],
                 [sg.Button('Refresh')],
                 [sg.Text(f'Weather: {back.weather(city, province)}')],
                 [sg.Text(f'Location: {back.findClosestCity(long, lat)}')],
@@ -38,11 +44,6 @@ def main_menu():
 
     window = sg.Window('Prokaryote', layout, size=(500,500), element_justification='c')
 
-    #Water Safety
-    water = [[sg.Text('Water Safety')], [sg.Text(f'Drainage: {back.drainageToLake(long, lat)}')]]
-
-    #Animal Species
-    animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")]]
 
 
     while True:
@@ -51,13 +52,9 @@ def main_menu():
             window.close()
             break
         if event == 'Water Safety Level':
-            window.close()
-            waterWindow = sg.Window('Water Health', water, size=(500,500), element_justification='c')
-            subwindow_handler(waterWindow)
+            subwindow_handler("water")
         if event == 'Species Nearby':
-            window.close()
-            animalWindow = sg.Window('Endangered Species Nearby', animal, size=(500,500), element_justification='c')
-            subwindow_handler(animalWindow)
+            subwindow_handler("animal")
         if event == "Refresh":
             window.close()
             main_menu()
