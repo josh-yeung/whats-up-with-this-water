@@ -295,3 +295,31 @@ def find_closest_animals(latitude, longitude):
             name = (cityCoords[i])[key]
             break
     return name
+
+def return_animal_facts(name):
+    if(name == "Sea otters"):
+        print("")
+    if(name == "Blue whale"):
+        print("")
+    if(name == "Basking shark"):
+        print("")
+    if(name == "Humpback whale"):
+        print("")
+    if(name == "Leatherback turtle"):
+        print("")
+    if(name == "Shortnose sturgeon"):
+        print("")
+    if(name == "Atlantic salmon"):
+        print("")
+    if(name == "Lake sturgeon"):
+        print("")
+    if(name == "White sturgeon"):
+        print("")
+    if(name == "Eastern Sand darter"):
+        print("")
+    if(name == "Vancouver lamprey"):
+        print("")
+    if(name == "Nooksack Dace"):
+        print("Location: Nooksack dace inhabit streams and rivers in British Columbia and some parts of the western United States.")
+        print("Diet: They primarily feed on aquatic invertebrates.")
+        print("Why They're Endangered: Habitat loss and degradation caused by urban development, agriculture, and water diversion have led to the decline of Nooksack dace populations. These factors have limited their suitable habitat.")
