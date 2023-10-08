@@ -9,7 +9,6 @@ import openpyxl
 def return_longlat():
     g = geocoder.ip('me')
     latitude, longitude = g.latlng
-    print(f"Latitude: {latitude}, Longitude: {longitude}")
     return latitude, longitude
 
 def longlat_to_city(lat, lon):
@@ -27,7 +26,6 @@ def weather(city, province):
     temp = soup.find('div', attrs={'class': 'BNeawe iBp4i AP7Wnd'}).text
 
     # printing all data
-    print("Temperature is", temp)
     return temp
 
 
@@ -84,16 +82,11 @@ def return_longlat():
     return latitude, longitude
 
 
-def findClosestLake(): 
-    #latitude, longitude = return_longlat()
-    latitude = 44.2963
-    longitude = -79.4362
-    # print("latitude: ", latitude)
-    # print("longitude: ", longitude)
+def findClosestLake(latitude, longitude): 
     referencePoint = {'latitude': latitude, 'longitude': longitude}
     locations = []
     lakeCoords = []
-    wb = openpyxl.load_workbook('magnetic-reconnection\station.xlsx')
+    wb = openpyxl.load_workbook('station.xlsx')
     ws = wb.active
     lofname = []
     loftype = []
@@ -132,11 +125,55 @@ def findClosestLake():
             break
     print(name)
     return name
+
+
+def findClosestCity(latitude, longitude): 
+    referencePoint = {'latitude': latitude, 'longitude': longitude}
+    locations = []
+    cityCoords = []
+    wb = openpyxl.load_workbook('canadacities.xlsx')
+    ws = wb.active
+    lofname = []
+    loftype = []
+    loflongitude = []
+    loflatitude = []
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=2).value
+        lofname.append(data)
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=3).value
+        loftype.append(data)
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=6).value
+        loflongitude.append(data)
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=5).value
+        loflatitude.append(data)
     
+    for i in range(0, len(loflongitude)):
+        x = {'latitude': loflatitude[i], 'longitude': loflongitude[i]}
+        locations.append(x)
+    
+    for i in range(0, len(lofname)):
+        key = str(loflatitude[i]) + ',' + str(loflongitude[i])
+        x = {key: lofname[i]}
+        cityCoords.append(x)
         
-findClosestLake()
-
-
+    nearest_location = find_nearest_location(referencePoint, locations)
+    # print(nearest_location)
+    x = nearest_location['latitude']
+    y = nearest_location['longitude']
+    key = str(x) + ',' + str(y)
+    for i in range(0, len(cityCoords)):
+        if key in cityCoords[i]:
+            name = (cityCoords[i])[key]
+            prov = (cityCoords[i])[key]
+            break
+    for j in range(2, ws.max_row+1):
+        data = ws.cell(j,column=2).value
+        if(data==name):
+            prov = ws.cell(j,column=3).value
+    return name, prov
 
 
     

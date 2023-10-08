@@ -25,9 +25,11 @@ def subwindow_handler(subwindow):
 
 def main_menu():
     #Home
+    long, lat = back.return_longlat()
+    city, province = back.findClosestCity(long, lat)
     layout = [  [sg.Button('Refresh')],
-                [sg.Text('Weather:')],
-                [sg.Text(f'Location: {back.return_longlat()}')],
+                [sg.Text(f'Weather: {back.weather(city, province)}')],
+                [sg.Text(f'Location: {back.findClosestCity(long, lat)}')],
                 [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] ]
 
     window = sg.Window('Prokaryote', layout, size=(500,500), element_justification='c')
