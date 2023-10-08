@@ -1,0 +1,2 @@
+https://saturncloud.io/blog/algorithm-to-calculate-nearest-location-based-on-longitude-latitude/
+https://simplemaps.com/data/canada-cities
