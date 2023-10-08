@@ -8,7 +8,9 @@ import zipfile
 import os
 im = Image.open("map2.png").convert('RGB')
 import math
-import openpyxl 
+import openpyxl
+from pyexcel.cookbook import merge_all_to_a_book
+import glob
 
 def return_longlat():
     g = geocoder.ip('me')
@@ -90,7 +92,7 @@ def findClosestLake(latitude, longitude):
     referencePoint = {'latitude': latitude, 'longitude': longitude}
     locations = []
     lakeCoords = []
-    wb = openpyxl.load_workbook('station.csv')
+    wb = openpyxl.load_workbook('station.xlsx')
     ws = wb.active
     lofname = []
     loflongitude = []
@@ -178,7 +180,7 @@ def findClosestCity(latitude, longitude):
 
 def drainageToLake(latitude, longitude): 
     name = findClosestLake(latitude, longitude)
-    wb = openpyxl.load_workbook('station.csv')
+    wb = openpyxl.load_workbook('station.xlsx')
     ws = wb.active
     lofname = []
     lofdrainage= []
@@ -204,7 +206,7 @@ def drainageToLake(latitude, longitude):
 
 def typeOfWater(latitude, longitude): 
     name = findClosestLake(latitude, longitude)
-    wb = openpyxl.load_workbook('station.csv')
+    wb = openpyxl.load_workbook('station.xlsx')
     ws = wb.active
     lofname = []
     loftype= []
@@ -232,6 +234,8 @@ def redownload_lakes_excel():
     with zipfile.ZipFile("station.zip", "r") as zip_ref:
         zip_ref.extractall()
     os.remove("station.zip")
+    merge_all_to_a_book(glob.glob("station.csv"), "station.xlsx")
+    os.remove("station.csv")
 
 def return_ecosystem(return_longlat):
     if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (74, 161, 112):
