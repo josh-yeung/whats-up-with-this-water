@@ -3,17 +3,17 @@ import time
 import backend as back
 
 def main():
-    sg.theme('LightBlue7')
+    # sg.theme('LightBlue7')
 
-    # Loading Screen
-    loading = [[sg.Text('Fun Fact')], [sg.Button('Start')]]
-    loadingWindow = sg.Window('Loading', loading, size=(500,500), element_justification='c')
+    # # Loading Screen
+    # loading = [[sg.Text('Fun Fact')], [sg.Button('Start')]]
+    # loadingWindow = sg.Window('Loading', loading, size=(500,500), element_justification='c')
             
-    #Loading Screen
-    loadingEvent, loadingValues = loadingWindow.read()
-    if (loadingEvent==sg.WIN_CLOSED or loadingEvent=="Start"):
-        loadingWindow.close()
-        main_menu()
+    # #Loading Screen
+    # loadingEvent, loadingValues = loadingWindow.read()
+    # if (loadingEvent==sg.WIN_CLOSED or loadingEvent=="Start"):
+    #     loadingWindow.close()
+    main_menu()
 
 def subwindow_handler(subwindow):
     subevent, subvalues = subwindow.read()
