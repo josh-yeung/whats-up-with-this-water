@@ -30,12 +30,14 @@ def main_menu():
     layout = [  [sg.Button('Refresh')],
                 [sg.Text(f'Weather: {back.weather(city, province)}')],
                 [sg.Text(f'Location: {back.findClosestCity(long, lat)}')],
+                [sg.Text(f'Closest Body of Water: {back.findClosestLake(long, lat)}')],
+                [sg.Text(f'Type of Water: {back.typeOfWater(long, lat)}')],
                 [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] ]
 
     window = sg.Window('Prokaryote', layout, size=(500,500), element_justification='c')
 
     #Water Safety
-    water = [[sg.Text('Water Safety')], [sg.Text("-Water Status")]]
+    water = [[sg.Text('Water Safety')], [sg.Text(f'Drainage: {back.drainageToLake(long, lat)}')]]
 
     #Animal Species
     animal = [[sg.Text('Animal Species')], [sg.Text("-Animal Fact")]]

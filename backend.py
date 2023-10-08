@@ -2,7 +2,6 @@ import geocoder
 import requests
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
-import geocoder
 import math
 import openpyxl 
 
@@ -89,15 +88,11 @@ def findClosestLake(latitude, longitude):
     wb = openpyxl.load_workbook('station.xlsx')
     ws = wb.active
     lofname = []
-    loftype = []
     loflongitude = []
     loflatitude = []
     for i in range(2, ws.max_row+1):
         data = ws.cell(i,column=4).value
         lofname.append(data)
-    for i in range(2, ws.max_row+1):
-        data = ws.cell(i,column=5).value
-        loftype.append(data)
     for i in range(2, ws.max_row+1):
         data = ws.cell(i,column=13).value
         loflongitude.append(data)
@@ -123,7 +118,6 @@ def findClosestLake(latitude, longitude):
         if key in lakeCoords[i]:
             name = (lakeCoords[i])[key]
             break
-    print(name)
     return name
 
 
@@ -176,7 +170,61 @@ def findClosestCity(latitude, longitude):
     return name, prov
 
 
+
+def drainageToLake(latitude, longitude): 
+    name = findClosestLake(latitude, longitude)
+    wb = openpyxl.load_workbook('station.xlsx')
+    ws = wb.active
+    lofname = []
+    lofdrainage= []
+    list = []
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=4).value
+        lofname.append(data)
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=8).value
+        lofdrainage.append(data)
+    for i in range(0, len(lofdrainage)):
+        x = {str(lofname[i]): lofdrainage[i]}
+        list.append(x)
+    for i in range(0, len(list)):
+        if name in list[i]:
+            if (list[i])[name] != None:
+                drainage = str((list[i])[name]) + " sq mi"
+                break
+            else:
+                drainage = "Unknown Amount"
+    return drainage
+
+
+def typeOfWater(latitude, longitude): 
+    name = findClosestLake(latitude, longitude)
+    wb = openpyxl.load_workbook('station.xlsx')
+    ws = wb.active
+    lofname = []
+    loftype= []
+    list = []
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=4).value
+        lofname.append(data)
+    for i in range(2, ws.max_row+1):
+        data = ws.cell(i,column=5).value
+        loftype.append(data)
+    for i in range(0, len(loftype)):
+        x = {str(lofname[i]): loftype[i]}
+        list.append(x)
+    for i in range(0, len(list)):
+        if name in list[i]:
+            if (list[i])[name] != None:
+                type = str((list[i])[name])
+                break
+            else:
+                type = "Unknown Water Source"
+    return type
+
     
+    
+
 
 
 
