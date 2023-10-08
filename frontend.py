@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 import time
 import backend as back
-
+        
 def main():
     # sg.theme('LightBlue7')
 
@@ -22,12 +22,12 @@ def subwindow_handler(subwindow):
         main_menu()
 
 
-
 def main_menu():
     #Home
     long, lat = back.return_longlat()
     city, province = back.findClosestCity(long, lat)
-    layout = [  [sg.Button('Refresh')],
+    layout = [  [sg.Image('canadamap.png'),],
+                [sg.Button('Refresh')],
                 [sg.Text(f'Weather: {back.weather(city, province)}')],
                 [sg.Text(f'Location: {back.findClosestCity(long, lat)}')],
                 [sg.Text(f'Closest Body of Water: {back.findClosestLake(long, lat)}')],
