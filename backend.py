@@ -304,7 +304,10 @@ def return_animal_facts(name):
     if(name == "Basking shark"):
         return ("")
     if(name == "Humpback whale"):
-        return ("")
+        x = ("Location: Mostly found in east and west coasts. Extending to labrador in the east\nand Northwestern Alaska in the west")
+        x += ("\n\nDiet: small fish, krill, and other small crustaceans")
+        x += ("\n\nWhy They're Endangered: Due to commercial whaling since the 1970’s\n\n\n")
+        return x
     if(name == "Leatherback turtle"):
         return ("")
     if(name == "Shortnose sturgeon"):
