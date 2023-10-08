@@ -11,7 +11,6 @@ import math
 import openpyxl
 from pyexcel.cookbook import merge_all_to_a_book
 import glob
-import pandas as pd
 
 def return_longlat():
     g = geocoder.ip('me')
