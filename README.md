@@ -27,9 +27,6 @@ The application fetches water quality data and presents it in an easy-to-underst
 
 # Environmental Insights:
 The app goes beyond water quality by providing facts about endangered species and environmental conditions specific to the user's location. This feature fosters awareness and promotes conservation efforts.
-
-# Beautiful User Interface:
-The app boasts an aesthetically pleasing design, ensuring that users have an enjoyable and visually appealing experience while accessing vital environmental information. It uses the PIL library to display images and graphics effectively.
 ____________________________________________________________________________________________________________________________________________________________________________________________________________________
 Team Members: Joshua Yeung, Alexander Diab-Liu, Daniel Ramirez-Gaston  
 October 07, 2023  
