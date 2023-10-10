@@ -252,7 +252,7 @@ def return_ecosystem(return_longlat):
         eco_system = "Cropland"
     if im.getpixel((return_longlat()[0] + 100, return_longlat()[1] + 140)) == (74, 161, 112):
         eco_system = "Built-in"
-    print(eco_system)
+    #print(eco_system)
     return eco_system
 
 

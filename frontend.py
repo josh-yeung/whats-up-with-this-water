@@ -68,7 +68,7 @@ def main_menu():
                 [sg.Text(f'Type of Water: {back.typeOfWater(long, lat)}', font=("Helvetica", 11))],
                 [sg.Button('Water Safety Level'), sg.Button('Species Nearby')] ]
 
-    window = sg.Window('Prokaryote', layout, size=(500,500), element_justification='c')
+    window = sg.Window('Home', layout, size=(500,500), element_justification='c')
 
 
     while True:
