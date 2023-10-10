@@ -3,7 +3,7 @@
 # Water Quality and Environmental Information App
 
 # Description
-The Water Quality and Environmental Information App is a user-friendly interface built using the PySimpleGUI library in Python. It seamlessly integrates several essential Python libraries such as openpyxl, geopy, requests, BeautifulSoup (bs4), and PIL to provide a comprehensive and informative experience for users interested in real-time water quality and environmental data.
+The Water Quality and Environmental Information App is a user-friendly interface built using the PySimpleGUI library in Python. It seamlessly integrates several essential Python libraries such as openpyxl, geopy, requests, BeautifulSoup (bs4), and PIL to provide a comprehensive and informative experience for users interested in real-time water quality and environmental data. The Water Quality and Environmental Information App is a powerful tool for anyone interested in staying informed about their local environment. Whether you're a concerned citizen, a researcher, or an environmental enthusiast, this app offers a comprehensive and visually engaging platform to explore and understand the world of water quality and environmental conservation.
 
 # Key Features
 
@@ -30,8 +30,6 @@ The app goes beyond water quality by providing facts about endangered species an
 
 # Beautiful User Interface:
 The app boasts an aesthetically pleasing design, ensuring that users have an enjoyable and visually appealing experience while accessing vital environmental information. It uses the PIL library to display images and graphics effectively.
-
-Overall, the Water Quality and Environmental Information App is a powerful tool for anyone interested in staying informed about their local environment. Whether you're a concerned citizen, a researcher, or an environmental enthusiast, this app offers a comprehensive and visually engaging platform to explore and understand the world of water quality and environmental conservation.
-
+____________________________________________________________________________________________________________________________________________________________________________________________________________________
 Team Members: Joshua Yeung, Alexander Diab-Liu, Daniel Ramirez-Gaston  
 October 07, 2023  
