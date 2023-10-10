@@ -35,8 +35,9 @@ def subwindow_handler(subwindow, window):
             [sg.Text('\n')], [sg.Image('waterquality.png')], [sg.Button("Back")]]
 
     nearby_animal = back.find_closest_animals(long,lat)
-    animal = [[sg.Image('humbackwhale.png')], [sg.Text('\n')],
-             [sg.Text(f'Animal Species: {nearby_animal}', font=("bold"))], [sg.Text('\n')], [sg.Text(back.return_animal_facts(nearby_animal))], [sg.Button("Ocean Wordle!")], [sg.Button("Back")]]
+    facts, image = back.return_animal_facts(nearby_animal)
+    animal = [[sg.Image(image)], [sg.Text('\n')],
+             [sg.Text(f'Animal Species: {nearby_animal}', font=("bold"))], [sg.Text('\n')], [sg.Text(facts)], [sg.Button("Ocean Wordle!")], [sg.Button("Back")]]
     if(subwindow=="water"):
         SecondWindow = sg.Window('Water Health', water, size=(500,500), element_justification='c')
     else:

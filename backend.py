@@ -301,59 +301,59 @@ def return_animal_facts(name):
         x = ("Location: Found mostly on western coast of Canada, along British Columbia \n")
         x += ("Diet: sea urchins, clams, mussels, crabs \n")
         x += ("Why They're Endangered:Found mostly on western coast of Canada, along British Columbia \n")
-        return x
+        return x, "sea_otter.jpg"
     if(name == "Blue whale"):
         x = ("Location: Found on western and eastern coast of Canada. Globally they live in all the oceans except for Atlantic \n")
         x += ("Diet: Krill, plankton and other tiny crustaceans\n")
         x += ("Why They're Endangered: Due to habitat loss and toxic materials, commercial fishing gear\n")
-        return x
+        return x, "blue_whale.jpg"
     if(name == "Basking shark"):
         x = ("Location: Mostly found in the white bay and Notre Dame Bay, to the Gulf of St. Laurent\n")
         x += ("Diet: Plankton and other small crustaceans \n")
         x += ("Why They're Endangered: Due to collisions with boats, commercial fishing lines, and an eradication program that last for a few years in the 1950’s\n")
-        return x
+        return x, "basking_shark.jpg"
     if(name == "Humpback whale"):
         x = ("Location: Mostly found in east and west coasts. Extending to labrador in the east\nand Northwestern Alaska in the west")
         x += ("\n\nDiet: small fish, krill, and other small crustaceans")
         x += ("\n\nWhy They're Endangered: Due to commercial whaling since the 1970’s\n\n\n")
-        return x
+        return x, "humbackwhale.png"
     if(name == "Leatherback turtle"):
         x = ("Location: Found mostly in the Atlantic ocean on the east coast of Canada, especially along the coast of Newfoundland & Labrador \n")
         x += ("Diet: Pelagic, jellyfish, and tunicates\n")
         x += ("Why They're Endangered: Due to Commercial fishing, illegal collection of eggs, pollution, and climate change\n")
-        return x
+        return x, "leatherback_turtle.jpg"
     if(name == "Shortnose sturgeon"):
         x = ("Location: Rivers and lakes on the east side of Canada such as the Saint John\n")
         x += ("Diet: insects, crustaceans, worms, mollusks\n")
         x += ("Why They're Endangered: Due to Habitat degradation, water pollution, dredging, commercial fishing\n")
-        return x
+        return x, "shortnose_sturgeon.png"
     if(name == "Atlantic salmon"):
         x = ("Location: Atlantic salmon are found in various rivers and coastal areas \nalong the Atlantic coast of Canada, including the Atlantic provinces and \nparts of Quebec.")
         x += ("\n\nDiet: Their diet primarily consists of smaller fish, invertebrates, \nand insects.\n\n\n")
         x += ("\n\nWhy They're Endangered: Atlantic salmon populations are endangered due \nto habitat destruction, including dam construction, water pollution, overfishing, \nand the impact of aquaculture practices. These factors have contributed to \nthe decline of wild Atlantic salmon stocks.\n\n\n")
-        return x
+        return x, "atlantic_salmon.png"
     if(name == "Lake sturgeon"):
         x = ("Location: Lake sturgeon are native to various watersheds across Canada, \nincluding the Great Lakes, St. Lawrence River, and many other rivers and lakes.")
         x += ("\n\nDiet: They are bottom-feeders and primarily consume aquatic \ninvertebrates, small fish, and plants.")
         x += ("\n\nLake sturgeon are endangered due to habitat loss and degradation \nfrom factors such as dam construction, pollution, and overharvesting. Their slow growth and late \nmaturity make them particularly vulnerable to population declines.\n\n\n")
-        return x
+        return x, ";ale_sturgeon.jpg"
     if(name == "White sturgeon"):
         x = ("Location: White sturgeon are found in the Fraser River and its \ntributaries in British Columbia.")
         x += ("\n\nDiet: They primarily feed on aquatic invertebrates and small fish.")
         x += ("\n\nWhy They're Endangered: White sturgeon face threats from habitat degradation, including dams\n and habitat alteration, as well as pollution and overharvesting. Their status is also \nimpacted by their slow growth and late maturity.\n\n\n")
-        return x
+        return x, "white_sturgeo.jpg"
     if(name == "Eastern Sand darter"):
         x = ("Location: Eastern sand darters inhabit streams and rivers in the Great Lakes\n and St. Lawrence River regions.")
         x += ("\n\nDiet: They primarily feed on small invertebrates and insect larvae.")
         x += ("\n\nWhy They're Endangered: These darters are endangered due to habitat\n loss and water quality issues caused by urbanization, agriculture, and other human activities. \nFragmentation of their habitat further threatens their populations.\n\n\n")
-        return x
+        return x, "eastern_sand_darter.jpg"
     if(name == "Vancouver lamprey"):
         x = ("Location: Vancouver lampreys are found in freshwater systems on Vancouver\n Island and the lower Fraser River in British Columbia.")
         x += ("\n\nDiet: Lampreys are parasitic and feed on the bodily fluids of other fish.")
         x += ("\n\nWhy They're Endangered: Habitat loss and water quality issues in their\n limited range have led to the decline of Vancouver lamprey populations. These \nlampreys are also sensitive to changes in water temperature and quality.\n\n\n")
-        return x
+        return x, "vancouver_landprey.jpg"
     if(name == "Nooksack Dace"):
         x = ("Location: Nooksack dace inhabit streams and rivers in British Columbia \nand some parts of the western United States.")
         x += ("\n\nDiet: They primarily feed on aquatic invertebrates.")
         x += ("\n\nWhy They're Endangered: Habitat loss and degradation caused by urban \ndevelopment, agriculture, and water diversion have led to the decline of Nooksack \ndace populations. These factors have limited their suitable habitat.\n\n\n")
-        return x
+        return x, "nooksack_dace.png"
